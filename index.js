@@ -3,6 +3,8 @@ const game = document.getElementById('game');
 const symbols = ["★","▲","●","✿","𓆙","𓅼","𓆏","𓆧"];
 let gameCards = randomizeArray();
 
+dealCards();
+
 function randomizeArray() {
  let gameBoard = symbols.concat(symbols);
  
@@ -31,4 +33,3 @@ function isMatch(x,y){
 return x == y;
 }
 
-randomizeArray();
