@@ -17,7 +17,10 @@ function randomizeArray() {
 }
 
 function dealCards(){
-  gameCards.forEach(c => buildCard(c) )
+  gameCards.forEach(c => {
+    const card = buildCard(c);
+    game.appendChild(card);
+  })
 }
 
 function buildCard(sym){
@@ -33,8 +36,14 @@ function buildCard(sym){
   card.appendChild(cardBack);
   card.classList.add('card');
   card.dataset.selected = 0;
-  // temp
-  game.appendChild(card);
+  card.onclick = (e) => (cardClickHandler(card, e));
+  return card;
+}
+
+function cardClickHandler (card, e) {
+  card.dataset.selected = 1;
+  console.log(card)
+  console.log(e)
 }
 
 function isMatch(x,y){
