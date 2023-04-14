@@ -1,3 +1,7 @@
+body {
+  background-color: lightgrey;
+}
+
 #game {
   height: 95vh;
   width: 80vh;
@@ -9,8 +13,8 @@
  }
 
 .card {
+  background-color: #f5f0df;
   display: flex;
-  border: 1px solid black;
   font-size: 10vh;
   height: 95%;
   width: 95%;
@@ -18,12 +22,14 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  transition: transform ease 300ms;
+  transition: ease 300ms;
   perspective: 1000px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 .card:hover {
   transform: translate(-1px, -3px);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .card[data-selected="0"] .card-back {
