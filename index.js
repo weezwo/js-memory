@@ -22,9 +22,17 @@ function dealCards(){
 
 function buildCard(sym){
   const card = document.createElement('div');
-  const cardText = document.createTextNode(sym);
+
+  const cardText = document.createElement('p');
+  cardText.innerText = sym;
+
+  const cardBack = document.createElement('div');
+  cardBack.classList.add('card-back');
+  
   card.appendChild(cardText);
+  card.appendChild(cardBack);
   card.classList.add('card');
+  card.dataset.selected = 0;
   // temp
   game.appendChild(card);
 }

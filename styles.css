@@ -18,4 +18,23 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+  transition: transform ease 300ms;
+}
+
+.card:hover {
+  transform: translate(-1px, -3px);
+}
+
+.card[data-selected="0"] .card-back {
+  content: '';
+  height: 93%;
+  width: 91%;
+  /* background-color: #587246; */
+  background-color: #89AC76;
+  background-color: #6da0c2;
+  border-radius: 2px;
+}
+
+.card[data-selected="0"] > p {
+  display: none;
 }
