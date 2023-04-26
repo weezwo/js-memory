@@ -40,7 +40,7 @@ body {
   border-radius: 2px;
 }
 
-.card[data-selected="0"] > p {
+.card[data-selected="0"] .card-face {
   display: none;
 }
 

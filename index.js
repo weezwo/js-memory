@@ -26,8 +26,9 @@ function dealCards(){
 function buildCard(sym){
   const card = document.createElement('div');
 
-  const cardText = document.createElement('p');
+  const cardText = document.createElement('div');
   cardText.innerText = sym;
+  cardText.classList.add('card-face');
 
   const cardBack = document.createElement('div');
   cardBack.classList.add('card-back');
