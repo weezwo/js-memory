@@ -4,6 +4,7 @@ const symbols = ["★","▲","●","✿","𓆙","𓅼","𓆏","𓆧"];
 let gameCards = randomizeArray();
 
 dealCards();
+const cards = Array.from(document.getElementsByClassName('card'));
 
 function randomizeArray() {
  let gameBoard = symbols.concat(symbols);
@@ -45,9 +46,31 @@ function cardClickHandler (card, e) {
   card.dataset.selected = 1;
   console.log(card)
   console.log(e)
+  const selectedCards = cardsSelected();
+  setTimeout( () =>{
+  if(selectedCards.length == 2) {
+    checkMatch(selectedCards);
+    resetSelected();
+  }}, 1000)
+}
+
+function cardsSelected() {
+  return  cards.filter(c => c.dataset.selected == 1);
 }
 
 function isMatch(x,y){
 return x == y;
 }
 
+function checkMatch(selectedCards) {
+  const firstCardContent = selectedCards[0].querySelector('.card-face').innerHTML;
+  const secondCardContent = selectedCards[1].querySelector('.card-face').innerHTML;
+
+  if(isMatch(firstCardContent, secondCardContent)) {
+    selectedCards.forEach(c => c.dataset.matched = 1);  
+  }
+}
+
+function resetSelected(){
+    cards.forEach(c => c.dataset.selected = 0);
+}
