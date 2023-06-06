@@ -1,5 +1,7 @@
 body {
   background-color: lightgrey;
+  display: flex;
+  justify-content: center;
 }
 
 #game {
