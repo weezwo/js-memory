@@ -1,5 +1,5 @@
 body {
-  background-color: lightgrey;
+  background-color: #A3A380;
   display: flex;
   justify-content: center;
 }
@@ -16,7 +16,7 @@ body {
  }
 
 .card {
-  background-color: #f5f0df;
+  background-color: #F6F0FF;
   display: flex;
   font-size: 9vh;
   height: 95%;
@@ -39,12 +39,13 @@ body {
   content: '';
   height: 93%;
   width: 91%;
-  background-color: #6da0c2;
+  background-color: #272D2D;
   border-radius: 2px;
 }
 
 .card-face {
   display: flex;
+  color: #2E0219;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -53,7 +54,7 @@ body {
   height: 100%;
   width: 100%;
   transform: rotateY(180deg) translateZ(1px);
-  background-color: #f5f0df;
+  background-color: #F6F0FF;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
@@ -68,5 +69,9 @@ body {
 }
 
 .feedback[data-feedback="celebration"] {
-  color: #ff2fa9;
+  color: #DF9B6D;
+}
+
+.feedback[data-feedback="mockery"] {
+  color: #2E0219;
 }
