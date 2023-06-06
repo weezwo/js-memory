@@ -48,7 +48,7 @@ function cardClickHandler (card, e) {
   const selectedCards = cardsSelected();
   setTimeout( () =>{
   if(selectedCards.length == 2) {
-    checkMatch(selectedCards);
+    checkMatch(selectedCards, e);
     resetSelected();
   }}, delay);
 }
@@ -61,22 +61,17 @@ function isMatch(x,y){
 return x == y;
 }
 
-function checkMatch(selectedCards) {
-  const firstCard = selectedCards[0].querySelector('.card-face');
-  const secondCard = selectedCards[1].querySelector('.card-face');
-
-  const firstCardContent = firstCard.innerHTML; 
-  const secondCardContent = secondCard.innerHTML;
+function checkMatch(selectedCards, e) {
+  const firstCardContent = selectedCards[0].querySelector('.card-face').innerHTML;
+  const secondCardContent = selectedCards[1].querySelector('.card-face').innerHTML;
 
   if(isMatch(firstCardContent, secondCardContent)) {
     selectedCards.forEach(c => c.dataset.matched = 1);  
-    spawnFeedback(firstCard, 'celebration');
-  } else { spawnFeedback(firstCard, 'mockery'); }
+    spawnFeedback(e, 'celebration');
+  } else { spawnFeedback(e, 'mockery'); }
 }
 
-function spawnFeedback(card, type){
-  const cardRect = card.getBoundingClientRect();
-
+function spawnFeedback(e, type){
   const celebrations = ['yay', 'woop', 'yahoo']
   const mockeries = ['nope', 'nah', 'lol']
   const rand = Math.floor(Math.random()*3);
@@ -84,16 +79,27 @@ function spawnFeedback(card, type){
   let feedback = document.createElement('div');
 
   feedback.classList.add('feedback');
-  feedback.style.top = `${cardRect.bottom}px`;
-  feedback.style.left = `${cardRect.right + 10}px`;
-  
-  if (type == 'celebration') feedback.innerText = celebrations[rand];
-  else if (type == 'mockery') feedback.innerText = mockeries[rand];
-  else feedback.innerText = '';
+  feedback.style.top = `${e.pageY}px`;
+  feedback.style.left = `${e.pageX + 10}px`;
+  feedback.style.opacity = '100%';
+
+  if (type == 'celebration') {
+    feedback.innerText = celebrations[rand];
+    feedback.dataset.feedback = 'celebration';
+  }else if (type == 'mockery'){
+    feedback.innerText = mockeries[rand];
+    feedback.dataset.feedback = 'mockery';
+  }else feedback.innerText = '';
   
   document.body.appendChild(feedback);
-
-  setTimeout(()=>{feedback.remove()},500)
+  const animateFeedback = setInterval(()=>{
+    feedback.style.top = `${feedback.style.top.split('px')[0] - 2}px`;
+    feedback.style.opacity = feedback.style.opacity - .1;
+  },35)
+  
+  setTimeout(()=>{
+    feedback.remove();
+    clearInterval(animateFeedback);},500)
 }
 
 
