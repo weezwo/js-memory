@@ -62,13 +62,40 @@ return x == y;
 }
 
 function checkMatch(selectedCards) {
-  const firstCardContent = selectedCards[0].querySelector('.card-face').innerHTML;
-  const secondCardContent = selectedCards[1].querySelector('.card-face').innerHTML;
+  const firstCard = selectedCards[0].querySelector('.card-face');
+  const secondCard = selectedCards[1].querySelector('.card-face');
+
+  const firstCardContent = firstCard.innerHTML; 
+  const secondCardContent = secondCard.innerHTML;
 
   if(isMatch(firstCardContent, secondCardContent)) {
     selectedCards.forEach(c => c.dataset.matched = 1);  
-  }
+    spawnFeedback(firstCard, 'celebration');
+  } else { spawnFeedback(firstCard, 'mockery'); }
 }
+
+function spawnFeedback(card, type){
+  const cardRect = card.getBoundingClientRect();
+
+  const celebrations = ['yay', 'woop', 'yahoo']
+  const mockeries = ['nope', 'nah', 'lol']
+  const rand = Math.floor(Math.random()*3);
+
+  let feedback = document.createElement('div');
+
+  feedback.classList.add('feedback');
+  feedback.style.top = `${cardRect.bottom}px`;
+  feedback.style.left = `${cardRect.right + 10}px`;
+  
+  if (type == 'celebration') feedback.innerText = celebrations[rand];
+  else if (type == 'mockery') feedback.innerText = mockeries[rand];
+  else feedback.innerText = '';
+  
+  document.body.appendChild(feedback);
+
+  setTimeout(()=>{feedback.remove()},500)
+}
+
 
 function resetSelected(){
     cards.forEach(c => c.dataset.selected = 0);

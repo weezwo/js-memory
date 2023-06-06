@@ -62,3 +62,6 @@ body {
   backface-visibility: hidden;
 }
 
+.feedback {
+  position: absolute;
+}
