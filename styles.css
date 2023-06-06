@@ -5,6 +5,7 @@ body {
 }
 
 #game {
+  padding-top: 2vh;
   height: 95vh;
   width: 80vh;
   display: grid;
