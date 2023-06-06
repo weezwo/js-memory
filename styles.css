@@ -64,4 +64,9 @@ body {
 
 .feedback {
   position: absolute;
+  font-family: "Geologica", sans-serif;
+}
+
+.feedback[data-feedback="celebration"] {
+  color: #ff2fa9;
 }
