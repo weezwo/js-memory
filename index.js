@@ -43,15 +43,14 @@ function buildCard(sym){
 }
 
 function cardClickHandler (card, e) {
+  const delay = 750;
   card.dataset.selected = 1;
-  console.log(card)
-  console.log(e)
   const selectedCards = cardsSelected();
   setTimeout( () =>{
   if(selectedCards.length == 2) {
     checkMatch(selectedCards);
     resetSelected();
-  }}, 1000)
+  }}, delay);
 }
 
 function cardsSelected() {
