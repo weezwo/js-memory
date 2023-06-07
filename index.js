@@ -85,13 +85,14 @@ function spawnFeedback(e, type){
 
   if (type == 'celebration') {
     feedback.innerText = celebrations[rand];
-    feedback.dataset.feedback = 'celebration';
+    feedback.classList.add('celebration');
   }else if (type == 'mockery'){
     feedback.innerText = mockeries[rand];
-    feedback.dataset.feedback = 'mockery';
+    feedback.classList.add('mockery');
   }else feedback.innerText = '';
   
   document.body.appendChild(feedback);
+  console.log(feedback)
   const animateFeedback = setInterval(()=>{
     feedback.style.top = `${feedback.style.top.split('px')[0] - 2}px`;
     feedback.style.opacity = feedback.style.opacity - .1;

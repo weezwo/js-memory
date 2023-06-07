@@ -68,10 +68,10 @@ body {
   font-family: "Geologica", sans-serif;
 }
 
-.feedback[data-feedback="celebration"] {
+.feedback.celebration {
   color: #DF9B6D;
 }
 
-.feedback[data-feedback="mockery"] {
+.feedback.mockery{
   color: #2E0219;
 }
