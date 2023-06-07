@@ -92,7 +92,6 @@ function spawnFeedback(e, type){
   }else feedback.innerText = '';
   
   document.body.appendChild(feedback);
-  console.log(feedback)
   const animateFeedback = setInterval(()=>{
     feedback.style.top = `${feedback.style.top.split('px')[0] - 2}px`;
     feedback.style.opacity = feedback.style.opacity - .1;
